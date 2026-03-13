@@ -1,4 +1,4 @@
-name: Angular Calculator CI
+name: Angular Calculator CI/CD
 on:
   push:
     branches: [ main ]
@@ -6,9 +6,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,3 +20,8 @@ jobs:
         run: npm install
       - name: Build Project
         run: npm run build
+      - name: Upload Production Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: calculator-build-folder
+          path: dist/my-first-app/browser/
