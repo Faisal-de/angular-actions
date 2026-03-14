@@ -2,26 +2,23 @@ name: Angular Calculator CI/CD
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  automation-task:
+    runs-on: self-hosted
     steps:
-      - name: Checkout code
+      - name: 1. Fetching code from GitHub
         uses: actions/checkout@v4
         
-      - name: Setup Node.js
+      - name: 2. Preparing Environment
         uses: actions/setup-node@v4
         with:
          node-version: '20'
-      - name: Install dependencies
+      - name: 3. Install NOde Modules
         run: npm install
-      - name: Build Project
+
+      - name: 4. Building the Application
         run: npm run build
-      - name: Upload Production Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: calculator-build-folder
-          path: dist/my-first-app/browser/
+      - name: 5. Final Status
+        run: echo "Build completed successfully!"
+       
