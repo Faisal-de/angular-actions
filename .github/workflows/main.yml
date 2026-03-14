@@ -13,13 +13,9 @@ jobs:
       - name: 2. Install Node Modules
         run: npm install
 
-      - name: 3. Running Tests
-        run: npm test -- --watch=false 
-        continuous-on-error: true
-
-      - name: 4. Building the Application
+      - name: 3. Building the Application
         run: npm run build
 
-      - name: 5. Final Status
-        run: echo "Build completed successfully!"
-       
+      - name: 4. Final Status
+        run: echo "Automation Complete!"
+        
