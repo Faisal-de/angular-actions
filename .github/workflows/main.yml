@@ -20,7 +20,5 @@ jobs:
       - name: 4. Building the Application
         run: npm run build
 
-      - name: 5. Final Status
-        run: echo "Automation Complete!"   
-      - name: 6. Deploy to Production Folder
-        run: xcopy "dist\my-first-app\browser\*" "C:\browser\" /s /e /y
+      
+        
