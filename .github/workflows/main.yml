@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: 1. Fetching code from GitHub
         uses: actions/checkout@v4
+        with:
+          path: '.'
         
       - name: 2. Install Node Modules
         run: npm install
