@@ -2,10 +2,9 @@
 
   <div style="width: 300px; border: 2px solid #c62222; border-radius: 10px; padding: 15px; background: #ba2c2c;">
     <h3 style="text-align: center;"> Faisal's DevOps Calculator </h3>
-    <div style="background: #222; color: rgb(1, 7, 1); padding: 15px; text-align: right; font-size: 24px; border-radius: 5px; margin-bottom: 10px; min-height: 30px;">
+    <div style="background: #e9e3e3; color: rgb(184, 194, 184); padding: 15px; text-align: right; font-size: 24px; border-radius: 5px; margin-bottom: 10px; min-height: 30px;">
       {{ display || '0' }}
     </div>
-    
     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
       <button (click)="appendToDisplay('7')" style="padding: 15px;">7</button>
       <button (click)="appendToDisplay('8')" style="padding: 15px;">8</button>
@@ -22,7 +21,7 @@
       <button (click)="appendToDisplay('3')" style="padding: 15px;">3</button>
       <button (click)="appendToDisplay('-')" style="padding: 15px; background: #ff9800;">-</button>
       
-      <button (click)="clearDisplay()" style="padding: 15px; background: #f44336; color: white;">C</button>
+      <button (click)="clearDisplay()" style="padding: 15px; background: #dcd6d5; color: white;">C</button>
       <button (click)="appendToDisplay('0')" style="padding: 15px;">0</button>
       <button (click)="calculate()" style="padding: 15px; background: #4caf50; color: white;">=</button>
       <button (click)="appendToDisplay('+')" style="padding: 15px; background: #ff9800;">+</button>
