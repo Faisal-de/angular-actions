@@ -25,13 +25,12 @@ jobs:
         run: |
           $linkPath= "C:\browser"
           $targetPath = "C:\releases\${{ github.sha }}\browser"
-          $oldPath = "C:\browser_old_" +(Get-Date -Format "yyyyMMddHHmmss")
           Import-Module WebAdministration
           Stop-WebSite -Name "MyFirstApp"
           Start-Sleep -Seconds 2
 
           if (Test-Path $linkPath) {
-            Move-Item -Path $linkPath -Destination $oldPath -ErrorAction SilentlyContinue }
+              cmd /c "rd /s /q $linkPath"}
+          Start-Sleep -Seconds 1
           New-Item -ItemType Junction -Path $linkPath -Target $targetPath
           Start-WebSite -Name "MyFirstApp"
-          Get-ChildItem "C:\" -Filter "browser_old_*" | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
