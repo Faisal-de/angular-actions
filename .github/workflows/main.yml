@@ -9,8 +9,6 @@ jobs:
     steps:
       - name: 1. Fetching code from GitHub
         uses: actions/checkout@v4
-        with:
-          path: '.'
         
       - name: 2. Install Node Modules
         run: npm install
@@ -20,7 +18,10 @@ jobs:
         continue-on-error: true
 
       - name: 4. Building the Application
-        run: npm run build
+        run: npm run build -- --output-path=C:/releases/${{ github.sha}}
 
-      
-        
+      - name: 5. IIS Switch
+        shell: powershell
+        run: |
+          $appcmd = "$env:windir\system32\inetsrv\appcmd.exe"
+          & $appcmd set vdir "MyFirstApp/" /physicalPath:"C:\releases\${{ github.sha }}"
