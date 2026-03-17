@@ -23,5 +23,14 @@ jobs:
       - name: 5. IIS Switch
         shell: powershell
         run: |
-          $appcmd = "$env:windir\system32\inetsrv\appcmd.exe"
-          & $appcmd set vdir "MyFirstApp/" /physicalPath:"C:\releases\${{ github.sha }}"
+          $linkPath= "C:\browser"
+          $targetPath = "C:\releases\${{ github.sha }}\browser"
+          if (Test-Path $linkPath) {
+            $item= Get-Item $linkPath
+            if ($item.Attributes -match "ReparsePoint") {
+              Remove-Item $linkPath
+            } else {
+                Remove-Item $linkPath -Recurse -Force
+            }
+          }
+          New-Item -ItemType Junction -Path $linkPath -Target $targetPath
