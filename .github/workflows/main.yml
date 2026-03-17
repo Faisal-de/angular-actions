@@ -18,7 +18,7 @@ jobs:
         continue-on-error: true
 
       - name: 4. Building the Application
-        run: npm run build -- --output-path=C:/releases/${{ github.sha}}
+        run: npm run build -- --output-path=C:/releases/${{ github.sha}} --base-href / --output-hashing none
 
       - name: 5. IIS Switch
         shell: powershell
