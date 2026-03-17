@@ -25,12 +25,17 @@ jobs:
         run: |
           $linkPath= "C:\browser"
           $targetPath = "C:\releases\${{ github.sha }}\browser"
+          Import-Module WebAdministration
+          Stop-WebSite -Name "MyFirstApp"
+          Start-Sleep -Seconds 3
+
           if (Test-Path $linkPath) {
             $item= Get-Item $linkPath
             if ($item.Attributes -match "ReparsePoint") {
-              Remove-Item $linkPath
+              Remove-Item $linkPath -Force
             } else {
                 Remove-Item $linkPath -Recurse -Force
             }
           }
           New-Item -ItemType Junction -Path $linkPath -Target $targetPath
+          Start-WebSite -Name "MyFirstApp"
