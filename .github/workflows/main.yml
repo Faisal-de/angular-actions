@@ -19,3 +19,8 @@ jobs:
 
       - name: 4. Building the Application
         run: npm run build -- --output-path=C:/releases/build1 --base-href / --output-hashing=all
+      - name: Build Angular App
+        working-directory: ./
+        run: |
+          npm install
+          ng build --output-path=C:/browser --configuration production
