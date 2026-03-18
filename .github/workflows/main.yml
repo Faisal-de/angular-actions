@@ -18,4 +18,4 @@ jobs:
         continue-on-error: true
 
       - name: 4. Building the Application
-        run: npm run build -- --output-path=C:/releases/build1 --base-href / --output-hashing
+        run: npm run build -- --output-path=C:/releases/build1 --base-href / --output-hashing=all
