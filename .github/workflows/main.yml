@@ -18,19 +18,4 @@ jobs:
         continue-on-error: true
 
       - name: 4. Building the Application
-        run: npm run build -- --output-path=C:/releases/${{ github.sha}} --base-href / --output-hashing none
-
-      - name: 5. IIS Switch
-        shell: powershell
-        run: |
-          $linkPath= "C:\browser"
-          $targetPath = "C:\releases\${{ github.sha }}\browser"
-          Import-Module WebAdministration
-          Stop-WebSite -Name "MyFirstApp"
-          Start-Sleep -Seconds 2
-
-          if (Test-Path $linkPath) {
-              cmd /c "rd /s /q $linkPath"}
-          Start-Sleep -Seconds 1
-          New-Item -ItemType Junction -Path $linkPath -Target $targetPath
-          Start-WebSite -Name "MyFirstApp"
+        run: npm run build -- --output-path=C:/releases/build1 --base-href / --output-hashing
