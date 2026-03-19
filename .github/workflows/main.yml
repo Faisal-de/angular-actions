@@ -18,5 +18,5 @@ jobs:
         continue-on-error: true
 
       - name: 4. Building and Deploying the Application
-        run: npm run build -- --output-path=C:\browser\browser --base-href / --output-hashing=all
+        run: npm run build -- --output-path=C:/browser --base-href / --output-hashing=all
     
